@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="no-tailwind.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="script.js" defer></script>
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Interactive card details form</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+
+      input {
+        border: 2px solid #dedddf;
+        border-radius: 5px;
+        padding: 7px 10px;
+        margin: 0 auto;
+        width: 100%;
+        display: block;
+        font-weight: bold;
+        color: hsl(278, 68%, 11%);
+      }
+
+      input::placeholder {
+        color: lightgray;
+      }
+
+      input:focus {
+        border: 2px solid hsl(249, 99%, 64%);
+      }
+
+      label {
+        margin-left: 28px;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        color: #21092f;
+        font-weight: 700;
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        display: block;
+        margin-left: 0px;
+      }
+
+      .complete {
+        animation-duration: 1s;
+        animation-name: opacityAnimation;
+      }
+
+      @keyframes opacityAnimation {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body class="font-space flex flex-col xl:flex-row">
+    <div
+      class="text-white bg-[url('/images/bg-main-mobile.png')] bg-no-repeat bg-contain xl:bg-[url('/images/bg-main-desktop.png')] xl:h-[610px] xl:bg-cover xl:w-[500px]"
+    >
+      <div
+        class="relative bg-[url('/images/bg-card-back.png')] bg-no-repeat bg-contain w-64 h-36 top-8 left-24 xl:scale-150 xl:top-[340px] xl:left-72 z-20"
+      >
+        <p class="cvc absolute top-[59px] right-10 text-xs tracking-wider">
+          000
+        </p>
+      </div>
+      <div
+        class="relative bg-[url('/images/bg-card-front.png')] -top-8 left-10 bg-no-repeat bg-contain w-64 h-36 xl:scale-150 xl:-top-10 xl:left-[220px] z-20"
+      >
+        <img src="/images/card-logo.svg" class="absolute top-4 left-6 w-12" />
+        <p
+          class="card-number absolute bottom-10 left-6 text-lg tracking-widest"
+        >
+          0000 0000 0000 0000
+        </p>
+        <p
+          class="name absolute bottom-4 left-6 text-[10px] uppercase tracking-wider"
+        >
+          Jane Appleseed
+        </p>
+        <p class="date absolute bottom-4 right-6 text-[10px] tracking-wider">
+          00/00
+        </p>
+      </div>
+    </div>
+    <main class="mt-2 pb-6 relative xl:top-36 xl:left-20">
+      <div
+        class="complete flex flex-col gap-6 justify-center items-center absolute top-0 left-0 bottom-0 right-0 bg-white z-10 w-full h-full xl:-top-[150px] xl:left-0 xl:gap-4 hidden"
+      >
+        <img class="xl:mb-4" src="/images/icon-complete.svg" />
+        <h1 class="text-very-dark-violet font-bold text-xl xl:text-2xl">
+          THANK YOU!
+        </h1>
+        <p class="text-gray-400 font-medium xl:text-lg">
+          We've added your card details.
+        </p>
+        <button
+          class="continue py-2 w-[80%] xl:w-[40%] rounded-md text-white bg-very-dark-violet xl:text-lg xl:mt-4 hover:bg-not-very-dark-violet"
+        >
+          Continue
+        </button>
+      </div>
+      <form
+        class="form grid grid-cols-4 grid-rows-3 w-[90%] mx-auto gap-4 xl:w-[45%]"
+      >
+        <div class="col-span-4 relative">
+          <label>CARDHOLDER NAME</label>
+          <input type="text" class="name-input" placeholder='eg. Jane Aplessed'
+          required/ >
+          <!-- <div
+            class="w-32 h-10 text-dark font-medium grayish-violet border-solid border-2 border-gray-600 text-center text py-2 rounded-sm absolute bottom-0 right-0"
+          >
+            Must be filled
+          </div> -->
+        </div>
+        <div class="col-span-4 relative">
+          <label>CARD NUMBER</label>
+          <input
+            type="text"
+            pattern="[0-9\s]+"
+            maxlength="19"
+            minlength="16"
+            class="number-input"
+            placeholder="eg. 1234 5678 9101 1000"
+            required
+          />
+          <!-- <div
+            class="w-32 h-10 text-dark font-medium grayish-violet border-solid border-2 border-gray-600 text-center text py-2 rounded-sm absolute bottom-0 right-0"
+          >
+            Must be filled
+          </div> -->
+        </div>
+        <div class="col-span-1 relative">
+          <label>EXP. DATE</label>
+          <input
+            type="text"
+            pattern="[0-9]+"
+            minlength="2"
+            maxlength="2"
+            class="mm-input"
+            placeholder="MM"
+            required
+          />
+          <!-- <div
+            class="w-32 h-10 text-dark font-medium grayish-violet border-solid border-2 border-gray-600 text-center text py-2 rounded-sm absolute bottom-0 right-0"
+          >
+            Must be filled
+          </div> -->
+        </div>
+        <div class="col-span-1 relative">
+          <label>(MM/YY)</label>
+          <input
+            type="text"
+            pattern="[0-9]+"
+            minlength="2"
+            maxlength="2"
+            class="yy-input"
+            placeholder="YY"
+            required
+          />
+          <!-- <div
+            class="w-32 h-10 text-dark font-medium grayish-violet border-solid border-2 border-gray-600 text-center text py-2 rounded-sm absolute bottom-0 right-0"
+          >
+            Must be filled
+          </div> -->
+        </div>
+        <div class="col-span-2 relative">
+          <label>CVC</label>
+          <input
+            type="text"
+            pattern="[0-9]+"
+            minlength="3"
+            maxlength="3"
+            class="cvc-input"
+            placeholder="eg. 123"
+            required
+          />
+          <!-- <div
+            class="w-32 h-10 text-dark font-medium grayish-violet border-solid border-2 border-gray-600 text-center text py-2 rounded-sm absolute bottom-0 right-0"
+          >
+            Must be filled
+          </div> -->
+        </div>
+        <div class="col-span-4 relative">
+          <button
+            class="mt-6 py-3 w-[100%] rounded-md text-white bg-very-dark-violet xl:w-[100%] xl:py-3 shadow-xl"
+          >
+            Confirm
+          </button>
+        </div>
+      </form>
+      <!-- <div class="flex justify-center items-center">
+        <button
+          id="submit-button"
+          class="mt-8 py-2 w-[90%] rounded-md text-white bg-very-dark-violet xl:w-[45%] xl:py-3 hover:bg-not-very-dark-violet"
+        >
+          Confirm
+        </button>
+      </div> -->
+    </main>
+
+    <!-- Exp. Date (MM/YY) MM YY CVC e.g. 123 Confirm -->
+
+    <!-- Completed state start -->
+    <!-- 
+    Thank you! We've added your card details Continue -->
+
+    <!-- <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </div> -->
+  </body>
+</html>
